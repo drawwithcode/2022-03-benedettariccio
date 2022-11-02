@@ -18,9 +18,9 @@ function setup() {
   analyzer = new p5.Amplitude();
   analyzer.setInput(myMusic);
 
-myMusic.play();
-myMusic.loop();
-myMusic.setVolume(0.09);
+//myMusic.play();
+//myMusic.loop();
+//myMusic.setVolume(0.09);
 
 
   for (let i = 0; i < 0; i++) {
@@ -38,7 +38,9 @@ myMusic.setVolume(0.09);
 function draw() {
   background("blue");
   
-  
+  if (myMusic.isPlaying() === false) {
+    myMusic.play();
+  }
   
   volume = analyzer.getLevel();
   volume = map(volume, 0, 1, 100, 400);
@@ -143,4 +145,3 @@ function draw() {
   function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
   }
-  
